@@ -5,23 +5,62 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GAAP</title>
-    <!-- bootstrap start-->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
-        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
-        crossorigin="anonymous"></script>
-    <!-- bootstrap end -->
+
+    <!-- style sheet 연결 -->
+    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"> -->
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <h1>home</h1>
+    <div class="header-black">
+        <div class="logo-black">
+            Logo
+        </div>
+        <div class="menu-black">
+            <ul>
+                <li class="dropdown">
+                    <a href="javascript:void(0)" class="dropbtn-black">K-IFRS ▼</a>
+                    <div class="dropdown-content">
+                        <a href="#">기준서</a>
+                        <a href="#">질의회신</a>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a href="javascript:void(0)" class="dropbtn-black">일반기업회계기준 ▼</a>
+                    <div class="dropdown-content">
+                        <a href="#">기준서</a>
+                        <a href="#">질의회신</a>
+                    </div>
+                </li>
+                <li class="dropbtn-black">
+                    로그인
+                </li>
+
+            </ul>
+        </div>
+    </div>
+
+
+
+
+
+    <div class="wrap">
+        <div class="title">
+            가장 빠른 회계 검색
+        </div>
+        <form>
+            <label class="box-radio-input"><input type="radio" name="std" value="kifrs" checked="checked" /> <span>K-IFRS</span></label>
+            <label class="box-radio-input"><input type="radio" name="std" value="kifsfaq" /> <span>K-IFRS 질의회신</span></label>
+            <label class="box-radio-input"><input type="radio" name="std" value="kgaap" /> <span>일반기업회계기준</span></label>
+            <label class="box-radio-input"><input type="radio" name="std" value="kgaapfaq" /> <span>일반기업 질의회신</span></label>
+
+        </form>
+        <input class="mainsearch" type="search" placeholder="기준을 선택 후 검색하세요" />
+    </div>
+
+
+
+
 </body>
 
 </html>
