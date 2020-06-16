@@ -7,7 +7,7 @@
 }
 
 .std-select {
-    height: 56px;
+    height: 6vh;
     display: flex;
     align-items: center;
     margin-right:1rem;
@@ -19,7 +19,6 @@
     padding:1rem;
     overflow-y: auto;    
     height: 82vh;
-    z-index: 2;
 }
 
 .main {
