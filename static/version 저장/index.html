@@ -34,16 +34,21 @@
     <script>
         function openclose() {
             if ($('#std-content').css('display') == 'block') {
+
+                $('#std-index').attr("class", "col-lg-4 border-right");
                 $('#std-index').show();
                 $('#std-content').hide();
             } else {
+
                 $('#std-index').hide();
                 $('#std-content').show();
             }
         }
 
         function move() {
+            $('#std-index').attr("class", "col-lg-4 border-right d-none d-lg-block");
             $('#std-index').hide();
+            $('#std-content').show();
         }
 
 
@@ -120,6 +125,7 @@
                         <a class="dropdown-item" href="#">북마크</a>
                         <a class="dropdown-item" href="#">공지사항</a>
                         <a class="dropdown-item" href="#">이용약관</a>
+                        <a class="dropdown-item" href="#">개인정보처리방침</a>
                     </div>
                 </li>
             </ul>
@@ -215,116 +221,145 @@
                     <div class="indep1"><a onclick="move()" class="atag" href="#1001-i-5">적용</a></div>
                     <div class="indep1"><a onclick="move()" class="atag" href="#1001-i-6">적용범위</a></div>
                     <div class="indep1"><a onclick="move()" class="atag" href="#1001-i-7">용어의 정의</a></div>
-                    <div class="indep1"><a class="atag" href="#1001-i-8">재무제표</a></div>
-                    <div class="indep2"><a class="atag" href="#1001-i-9">- 재무제표의 목적</a></div>
-                    <div class="indep2"><a class="atag" href="#1001-i-10">- 전체 재무제표</a></div>
-                    <div class="indep2"><a class="atag" href="#1001-i-11">- 일반사항</a></div>
-                    <div class="indep3"><a class="atag" href="#1001-i-12">· 공정한 표시와 한국채택국제회계기준의 준수</a></div>
-                    <div class="indep3"><a class="atag" href="#1001-i-13">· 계속기업</a></div>
-                    <div class="indep3"><a class="atag" href="#1001-i-14">· 발생기준 회계</a></div>
-                    <div class="indep3"><a class="atag" href="#1001-i-15">· 중요성과 통합표시</a></div>
-                    <div class="indep3"><a class="atag" href="#1001-i-16">· 상계</a></div>
-                    <div class="indep3"><a class="atag" href="#1001-i-17">· 보고빈도</a></div>
-                    <div class="indep3"><a class="atag" href="#1001-i-18">· 비교정보</a></div>
-                    <div class="indep3"><a class="atag" href="#1001-i-19">· 표시의 계속성</a></div>
-                    <div class="indep1"><a class="atag" href="#1001-i-20">구조와 내용</a></div>
-                    <div class="indep2"><a class="atag" href="#1001-i-21">- 개요</a></div>
-                    <div class="indep2"><a class="atag" href="#1001-i-22">- 재무제표의 식별</a></div>
-                    <div class="indep2"><a class="atag" href="#1001-i-23">- 재무상태표</a></div>
-                    <div class="indep3"><a class="atag" href="#1001-i-24">· 재무상태표에 표시되는 정보</a></div>
-                    <div class="indep3"><a class="atag" href="#1001-i-25">· 유동과 비유동의 구분</a></div>
-                    <div class="indep3"><a class="atag" href="#1001-i-26">· 유동자산</a></div>
-                    <div class="indep3"><a class="atag" href="#1001-i-27">· 유동부채</a></div>
-                    <div class="indep3"><a class="atag" href="#1001-i-28">· 재무상태표 또는 주석에 표시되는 정보</a></div>
-                    <div class="indep2"><a class="atag" href="#1001-i-29">- 포괄손익계산서</a></div>
-                    <div class="indep3"><a class="atag" href="#1001-i-30">· 당기손익 부분 또는 손익계산서에 표시되는 정보</a></div>
-                    <div class="indep3"><a class="atag" href="#1001-i-31">· 기타포괄손익 부분에 표시되는 정보</a></div>
-                    <div class="indep3"><a class="atag" href="#1001-i-32">· 당기순손익</a></div>
-                    <div class="indep3"><a class="atag" href="#1001-i-33">· 기타포괄손익</a></div>
-                    <div class="indep3"><a class="atag" href="#1001-i-34">· 포괄손익계산서 또는 주석에 표시되는 정보</a></div>
-                    <div class="indep2"><a class="atag" href="#1001-i-35">- 자본변동표</a></div>
-                    <div class="indep3"><a class="atag" href="#1001-i-36">· 자본변동표에 표시되어야 하는 정보</a></div>
-                    <div class="indep3"><a class="atag" href="#1001-i-37">· 자본변동표나 주석에 표시되어야 하는 정보</a></div>
-                    <div class="indep2"><a class="atag" href="#1001-i-38">- 현금흐름표</a></div>
-                    <div class="indep3"><a class="atag" href="#1001-i-39">· 주석</a></div>
-                    <div class="indep3"><a class="atag" href="#1001-i-40">· 회계정책의 공시</a></div>
-                    <div class="indep3"><a class="atag" href="#1001-i-41">· 추정 불확실성의 원천</a></div>
-                    <div class="indep3"><a class="atag" href="#1001-i-42">· 자본</a></div>
-                    <div class="indep3"><a class="atag" href="#1001-i-43">· 자본으로 분류되는 풋가능 금융상품</a></div>
-                    <div class="indep3"><a class="atag" href="#1001-i-44">· 기타 공시</a></div>
-                    <div class="indep2"><a class="atag" href="#1001-i-45">- 시행일과 경과규정</a></div>
-                    <div class="indep1"><a class="atag" href="#1001-i-46">기준서 등의 대체 </a></div>
-                    <div class="indep1"><a class="atag" href="#1001-i-47">기업회계기준서 제1001호의 제정에 대한 회계기준위원회의 의결</a></div>
-                    <div class="indep0"><a class="atag" href="#1001-i-48">결론도출근거</a></div>
-                    <div class="indep1"><a class="atag" href="#1001-i-49">도입</a></div>
-                    <div class="indep2"><a class="atag" href="#1001-i-50">- 연차 개선과제—IAS 1의 전면 개정(2003년) </a></div>
-                    <div class="indep2"><a class="atag" href="#1001-i-51">- IAS 1의 개정- 자본에 대한 공시(2005년)</a></div>
-                    <div class="indep2"><a class="atag" href="#1001-i-52">- IAS 32와 IAS 1 개정 - 풋가능 금융상품과 청산시 발생하는 의무</a>
+                    <div class="indep1"><a onclick="move()" class="atag" href="#1001-i-8">재무제표</a></div>
+                    <div class="indep2"><a onclick="move()" class="atag" href="#1001-i-9">- 재무제표의 목적</a></div>
+                    <div class="indep2"><a onclick="move()" class="atag" href="#1001-i-10">- 전체 재무제표</a></div>
+                    <div class="indep2"><a onclick="move()" class="atag" href="#1001-i-11">- 일반사항</a></div>
+                    <div class="indep3"><a onclick="move()" class="atag" href="#1001-i-12">· 공정한 표시와 한국채택국제회계기준의 준수</a>
                     </div>
-                    <div class="indep2"><a class="atag" href="#1001-i-53">- 기타포괄손익 항목의 표시(IAS 1 개정)</a></div>
-                    <div class="indep2"><a class="atag" href="#1001-i-54">- 재무제표 표시—공동과제</a></div>
-                    <div class="indep1"><a class="atag" href="#1001-i-55">정의</a></div>
-                    <div class="indep2"><a class="atag" href="#1001-i-56">- 일반목적 재무제표(문단 7)</a></div>
-                    <div class="indep2"><a class="atag" href="#1001-i-57">- 중요성의 정의 (문단 7)</a></div>
-                    <div class="indep3"><a class="atag" href="#1001-i-58">· 중요성의 정의 개선</a></div>
-                    <div class="indep3"><a class="atag" href="#1001-i-59">· 정보를 불분명하게 함</a></div>
-                    <div class="indep3"><a class="atag" href="#1001-i-60">· 그 밖의 개정 내용</a></div>
-                    <div class="indep3"><a class="atag" href="#1001-i-61">· 예상되는 개정의 영향</a></div>
-                    <div class="indep3"><a class="atag" href="#1001-i-62">· 개정 내용의 시행일</a></div>
-                    <div class="indep1"><a class="atag" href="#1001-i-63">재무제표</a></div>
-                    <div class="indep2"><a class="atag" href="#1001-i-64">- 전체 재무제표</a></div>
-                    <div class="indep3"><a class="atag" href="#1001-i-65">· 재무제표의 명칭(문단 10)</a></div>
-                    <div class="indep3"><a class="atag" href="#1001-i-66">· 동등한 비중(문단 11과 12)</a></div>
-                    <div class="indep2"><a class="atag" href="#1001-i-67">- IFRS로부터의 일탈(문단 19∼24)</a></div>
-                    <div class="indep2"><a class="atag" href="#1001-i-68">- 중요성과 통합표시 (문단 29∼31)</a></div>
-                    <div class="indep2"><a class="atag" href="#1001-i-69">- 비교정보</a></div>
-                    <div class="indep3"><a class="atag" href="#1001-i-70">· 가장 이른 비교기간의 기초 재무상태표(문단 39)</a></div>
-                    <div class="indep3"><a class="atag" href="#1001-i-71">· 비교정보 요구사항의 명확화</a></div>
-                    <div class="indep3"><a class="atag" href="#1001-i-72">· IAS 34 ‘중간재무보고’</a></div>
-                    <div class="indep3"><a class="atag" href="#1001-i-73">· 요구사항의 면제 기준(문단 41∼44)</a></div>
-                    <div class="indep2"><a class="atag" href="#1001-i-74">- 소유주 및 비소유주와의 거래로 인한 자본 변동의 보고</a></div>
-                    <div class="indep1"><a class="atag" href="#1001-i-75">재무상태표</a></div>
-                    <div class="indep2"><a class="atag" href="#1001-i-76">- 재무상태표에 표시되는 정보(문단 54∼55A)</a></div>
-                    <div class="indep2"><a class="atag" href="#1001-i-77">- 유동자산과 유동부채(문단 68과 71)</a></div>
-                    <div class="indep2"><a class="atag" href="#1001-i-78">- 전환상품의 부채요소에 대한 분류(문단 69)</a></div>
-                    <div class="indep2"><a class="atag" href="#1001-i-79">- 보고기간후사건이 부채의 분류에 미치는 효과(문단 69∼76)</a></div>
-                    <div class="indep1"><a class="atag" href="#1001-i-80">포괄손익계산서</a></div>
-                    <div class="indep2"><a class="atag" href="#1001-i-81">- 포괄손익의 보고 (문단 81)</a></div>
-                    <div class="indep2"><a class="atag" href="#1001-i-82">- 영업활동의 성과</a></div>
-                    <div class="indep2"><a class="atag" href="#1001-i-83">- 당기순손익 중간합계 (문단 82)</a></div>
-                    <div class="indep2"><a class="atag" href="#1001-i-84">- 당기손익 부분 또는 손익계산서에 표시되는 정보(문단 85∼85B)</a>
+                    <div class="indep3"><a onclick="move()" class="atag" href="#1001-i-13">· 계속기업</a></div>
+                    <div class="indep3"><a onclick="move()" class="atag" href="#1001-i-14">· 발생기준 회계</a></div>
+                    <div class="indep3"><a onclick="move()" class="atag" href="#1001-i-15">· 중요성과 통합표시</a></div>
+                    <div class="indep3"><a onclick="move()" class="atag" href="#1001-i-16">· 상계</a></div>
+                    <div class="indep3"><a onclick="move()" class="atag" href="#1001-i-17">· 보고빈도</a></div>
+                    <div class="indep3"><a onclick="move()" class="atag" href="#1001-i-18">· 비교정보</a></div>
+                    <div class="indep3"><a onclick="move()" class="atag" href="#1001-i-19">· 표시의 계속성</a></div>
+                    <div class="indep1"><a onclick="move()" class="atag" href="#1001-i-20">구조와 내용</a></div>
+                    <div class="indep2"><a onclick="move()" class="atag" href="#1001-i-21">- 개요</a></div>
+                    <div class="indep2"><a onclick="move()" class="atag" href="#1001-i-22">- 재무제표의 식별</a></div>
+                    <div class="indep2"><a onclick="move()" class="atag" href="#1001-i-23">- 재무상태표</a></div>
+                    <div class="indep3"><a onclick="move()" class="atag" href="#1001-i-24">· 재무상태표에 표시되는 정보</a></div>
+                    <div class="indep3"><a onclick="move()" class="atag" href="#1001-i-25">· 유동과 비유동의 구분</a></div>
+                    <div class="indep3"><a onclick="move()" class="atag" href="#1001-i-26">· 유동자산</a></div>
+                    <div class="indep3"><a onclick="move()" class="atag" href="#1001-i-27">· 유동부채</a></div>
+                    <div class="indep3"><a onclick="move()" class="atag" href="#1001-i-28">· 재무상태표 또는 주석에 표시되는 정보</a>
                     </div>
-                    <div class="indep2"><a class="atag" href="#1001-i-85">- 소수주주지분(문단 83)</a></div>
-                    <div class="indep2"><a class="atag" href="#1001-i-86">- 특별손익 항목(문단 87)</a></div>
-                    <div class="indep2"><a class="atag" href="#1001-i-87">- 기타포괄손익 - 관련 세효과(문단 90과 문단 91)</a></div>
-                    <div class="indep2"><a class="atag" href="#1001-i-88">- 재분류조정(문단 92∼96)</a></div>
-                    <div class="indep1"><a class="atag" href="#1001-i-89">자본변동표</a></div>
-                    <div class="indep2"><a class="atag" href="#1001-i-90">- 소급적용이나 소급재작성의 영향(문단 106⑵)</a></div>
-                    <div class="indep2"><a class="atag" href="#1001-i-91">- 기타포괄손익의 각 구성요소에 대한 조정(문단 106(4)㈏ 및 106A)</a>
+                    <div class="indep2"><a onclick="move()" class="atag" href="#1001-i-29">- 포괄손익계산서</a></div>
+                    <div class="indep3"><a onclick="move()" class="atag" href="#1001-i-30">· 당기손익 부분 또는 손익계산서에 표시되는
+                            정보</a></div>
+                    <div class="indep3"><a onclick="move()" class="atag" href="#1001-i-31">· 기타포괄손익 부분에 표시되는 정보</a>
                     </div>
-                    <div class="indep2"><a class="atag" href="#1001-i-92">- 배당의 표시(문단 107)</a></div>
-                    <div class="indep1"><a class="atag" href="#1001-i-93">현금흐름표</a></div>
-                    <div class="indep2"><a class="atag" href="#1001-i-94">- IAS 7 현금흐름표(Cash Flow Statements)(문단
-                            111)</a>
+                    <div class="indep3"><a onclick="move()" class="atag" href="#1001-i-32">· 당기순손익</a></div>
+                    <div class="indep3"><a onclick="move()" class="atag" href="#1001-i-33">· 기타포괄손익</a></div>
+                    <div class="indep3"><a onclick="move()" class="atag" href="#1001-i-34">· 포괄손익계산서 또는 주석에 표시되는 정보</a>
                     </div>
-                    <div class="indep1"><a class="atag" href="#1001-i-95">주석</a></div>
-                    <div class="indep2"><a class="atag" href="#1001-i-96">- 구조 (문단 112∼116)</a></div>
-                    <div class="indep2"><a class="atag" href="#1001-i-97">- 회계정책의 공시(문단 117∼121)</a></div>
-                    <div class="indep2"><a class="atag" href="#1001-i-98">- 회계정책을 적용하는 과정에서 경영진이 내린 판단의 공시(문단
-                            122∼124)</a>
+                    <div class="indep2"><a onclick="move()" class="atag" href="#1001-i-35">- 자본변동표</a></div>
+                    <div class="indep3"><a onclick="move()" class="atag" href="#1001-i-36">· 자본변동표에 표시되어야 하는 정보</a>
                     </div>
-                    <div class="indep2"><a class="atag" href="#1001-i-99">- 추정 불확실성의 주요 원천의 공시(문단 125∼133)</a></div>
-                    <div class="indep2"><a class="atag" href="#1001-i-100">- 자본에 대한 공시(문단 134와 문단 135)</a></div>
-                    <div class="indep2"><a class="atag" href="#1001-i-101">- 자본관리의 목적, 정책 및 절차(문단 136)</a></div>
-                    <div class="indep2"><a class="atag" href="#1001-i-102">- 외부적으로 부과된 자본유지요건(문단 136)</a></div>
-                    <div class="indep2"><a class="atag" href="#1001-i-103">- 내부적인 자본목표</a></div>
-                    <div class="indep2"><a class="atag" href="#1001-i-104">- 풋가능 금융상품과 청산시 발생하는 의무</a></div>
-                    <div class="indep2"><a class="atag" href="#1001-i-105">- 주당 측정치의 표시</a></div>
-                    <div class="indep1"><a class="atag" href="#1001-i-106">경과규정과 시행일</a></div>
-                    <div class="indep1"><a class="atag" href="#1001-i-107">SFAS 130과의 차이점</a></div>
-                    <div class="indep0"><a class="atag" href="#1001-i-108">소수의견</a></div>
-                    <div class="indep0"><a class="atag" href="#1001-i-109">실무적용지침</a></div>
-                    <div class="indep0"><a class="atag" href="#1001-i-110">개정별 비교</a></div>
+                    <div class="indep3"><a onclick="move()" class="atag" href="#1001-i-37">· 자본변동표나 주석에 표시되어야 하는 정보</a>
+                    </div>
+                    <div class="indep2"><a onclick="move()" class="atag" href="#1001-i-38">- 현금흐름표</a></div>
+                    <div class="indep3"><a onclick="move()" class="atag" href="#1001-i-39">· 주석</a></div>
+                    <div class="indep3"><a onclick="move()" class="atag" href="#1001-i-40">· 회계정책의 공시</a></div>
+                    <div class="indep3"><a onclick="move()" class="atag" href="#1001-i-41">· 추정 불확실성의 원천</a></div>
+                    <div class="indep3"><a onclick="move()" class="atag" href="#1001-i-42">· 자본</a></div>
+                    <div class="indep3"><a onclick="move()" class="atag" href="#1001-i-43">· 자본으로 분류되는 풋가능 금융상품</a>
+                    </div>
+                    <div class="indep3"><a onclick="move()" class="atag" href="#1001-i-44">· 기타 공시</a></div>
+                    <div class="indep2"><a onclick="move()" class="atag" href="#1001-i-45">- 시행일과 경과규정</a></div>
+                    <div class="indep1"><a onclick="move()" class="atag" href="#1001-i-46">기준서 등의 대체 </a></div>
+                    <div class="indep1"><a onclick="move()" class="atag" href="#1001-i-47">기업회계기준서 제1001호의 제정에 대한
+                            회계기준위원회의 의결</a></div>
+                    <div class="indep0"><a onclick="move()" class="atag" href="#1001-i-48">결론도출근거</a></div>
+                    <div class="indep1"><a onclick="move()" class="atag" href="#1001-i-49">도입</a></div>
+                    <div class="indep2"><a onclick="move()" class="atag" href="#1001-i-50">- 연차 개선과제—IAS 1의 전면 개정(2003년)
+                        </a></div>
+                    <div class="indep2"><a onclick="move()" class="atag" href="#1001-i-51">- IAS 1의 개정- 자본에 대한
+                            공시(2005년)</a></div>
+                    <div class="indep2"><a onclick="move()" class="atag" href="#1001-i-52">- IAS 32와 IAS 1 개정 - 풋가능
+                            금융상품과 청산시 발생하는 의무</a></div>
+                    <div class="indep2"><a onclick="move()" class="atag" href="#1001-i-53">- 기타포괄손익 항목의 표시(IAS 1 개정)</a>
+                    </div>
+                    <div class="indep2"><a onclick="move()" class="atag" href="#1001-i-54">- 재무제표 표시—공동과제</a></div>
+                    <div class="indep1"><a onclick="move()" class="atag" href="#1001-i-55">정의</a></div>
+                    <div class="indep2"><a onclick="move()" class="atag" href="#1001-i-56">- 일반목적 재무제표(문단 7)</a></div>
+                    <div class="indep2"><a onclick="move()" class="atag" href="#1001-i-57">- 중요성의 정의 (문단 7)</a></div>
+                    <div class="indep3"><a onclick="move()" class="atag" href="#1001-i-58">· 중요성의 정의 개선</a></div>
+                    <div class="indep3"><a onclick="move()" class="atag" href="#1001-i-59">· 정보를 불분명하게 함</a></div>
+                    <div class="indep3"><a onclick="move()" class="atag" href="#1001-i-60">· 그 밖의 개정 내용</a></div>
+                    <div class="indep3"><a onclick="move()" class="atag" href="#1001-i-61">· 예상되는 개정의 영향</a></div>
+                    <div class="indep3"><a onclick="move()" class="atag" href="#1001-i-62">· 개정 내용의 시행일</a></div>
+                    <div class="indep1"><a onclick="move()" class="atag" href="#1001-i-63">재무제표</a></div>
+                    <div class="indep2"><a onclick="move()" class="atag" href="#1001-i-64">- 전체 재무제표</a></div>
+                    <div class="indep3"><a onclick="move()" class="atag" href="#1001-i-65">· 재무제표의 명칭(문단 10)</a></div>
+                    <div class="indep3"><a onclick="move()" class="atag" href="#1001-i-66">· 동등한 비중(문단 11과 12)</a></div>
+                    <div class="indep2"><a onclick="move()" class="atag" href="#1001-i-67">- IFRS로부터의 일탈(문단 19∼24)</a>
+                    </div>
+                    <div class="indep2"><a onclick="move()" class="atag" href="#1001-i-68">- 중요성과 통합표시 (문단 29∼31)</a>
+                    </div>
+                    <div class="indep2"><a onclick="move()" class="atag" href="#1001-i-69">- 비교정보</a></div>
+                    <div class="indep3"><a onclick="move()" class="atag" href="#1001-i-70">· 가장 이른 비교기간의 기초 재무상태표(문단
+                            39)</a></div>
+                    <div class="indep3"><a onclick="move()" class="atag" href="#1001-i-71">· 비교정보 요구사항의 명확화</a></div>
+                    <div class="indep3"><a onclick="move()" class="atag" href="#1001-i-72">· IAS 34 ‘중간재무보고’</a></div>
+                    <div class="indep3"><a onclick="move()" class="atag" href="#1001-i-73">· 요구사항의 면제 기준(문단 41∼44)</a>
+                    </div>
+                    <div class="indep2"><a onclick="move()" class="atag" href="#1001-i-74">- 소유주 및 비소유주와의 거래로 인한 자본 변동의
+                            보고</a></div>
+                    <div class="indep1"><a onclick="move()" class="atag" href="#1001-i-75">재무상태표</a></div>
+                    <div class="indep2"><a onclick="move()" class="atag" href="#1001-i-76">- 재무상태표에 표시되는 정보(문단
+                            54∼55A)</a></div>
+                    <div class="indep2"><a onclick="move()" class="atag" href="#1001-i-77">- 유동자산과 유동부채(문단 68과 71)</a>
+                    </div>
+                    <div class="indep2"><a onclick="move()" class="atag" href="#1001-i-78">- 전환상품의 부채요소에 대한 분류(문단
+                            69)</a></div>
+                    <div class="indep2"><a onclick="move()" class="atag" href="#1001-i-79">- 보고기간후사건이 부채의 분류에 미치는 효과(문단
+                            69∼76)</a></div>
+                    <div class="indep1"><a onclick="move()" class="atag" href="#1001-i-80">포괄손익계산서</a></div>
+                    <div class="indep2"><a onclick="move()" class="atag" href="#1001-i-81">- 포괄손익의 보고 (문단 81)</a></div>
+                    <div class="indep2"><a onclick="move()" class="atag" href="#1001-i-82">- 영업활동의 성과</a></div>
+                    <div class="indep2"><a onclick="move()" class="atag" href="#1001-i-83">- 당기순손익 중간합계 (문단 82)</a>
+                    </div>
+                    <div class="indep2"><a onclick="move()" class="atag" href="#1001-i-84">- 당기손익 부분 또는 손익계산서에 표시되는
+                            정보(문단 85∼85B)</a></div>
+                    <div class="indep2"><a onclick="move()" class="atag" href="#1001-i-85">- 소수주주지분(문단 83)</a></div>
+                    <div class="indep2"><a onclick="move()" class="atag" href="#1001-i-86">- 특별손익 항목(문단 87)</a></div>
+                    <div class="indep2"><a onclick="move()" class="atag" href="#1001-i-87">- 기타포괄손익 - 관련 세효과(문단 90과 문단
+                            91)</a></div>
+                    <div class="indep2"><a onclick="move()" class="atag" href="#1001-i-88">- 재분류조정(문단 92∼96)</a></div>
+                    <div class="indep1"><a onclick="move()" class="atag" href="#1001-i-89">자본변동표</a></div>
+                    <div class="indep2"><a onclick="move()" class="atag" href="#1001-i-90">- 소급적용이나 소급재작성의 영향(문단
+                            106⑵)</a></div>
+                    <div class="indep2"><a onclick="move()" class="atag" href="#1001-i-91">- 기타포괄손익의 각 구성요소에 대한 조정(문단
+                            106(4)㈏ 및 106A)</a></div>
+                    <div class="indep2"><a onclick="move()" class="atag" href="#1001-i-92">- 배당의 표시(문단 107)</a></div>
+                    <div class="indep1"><a onclick="move()" class="atag" href="#1001-i-93">현금흐름표</a></div>
+                    <div class="indep2"><a onclick="move()" class="atag" href="#1001-i-94">- IAS 7 현금흐름표(Cash Flow
+                            Statements)(문단 111)</a></div>
+                    <div class="indep1"><a onclick="move()" class="atag" href="#1001-i-95">주석</a></div>
+                    <div class="indep2"><a onclick="move()" class="atag" href="#1001-i-96">- 구조 (문단 112∼116)</a></div>
+                    <div class="indep2"><a onclick="move()" class="atag" href="#1001-i-97">- 회계정책의 공시(문단 117∼121)</a>
+                    </div>
+                    <div class="indep2"><a onclick="move()" class="atag" href="#1001-i-98">- 회계정책을 적용하는 과정에서 경영진이 내린 판단의
+                            공시(문단 122∼124)</a></div>
+                    <div class="indep2"><a onclick="move()" class="atag" href="#1001-i-99">- 추정 불확실성의 주요 원천의 공시(문단
+                            125∼133)</a></div>
+                    <div class="indep2"><a onclick="move()" class="atag" href="#1001-i-100">- 자본에 대한 공시(문단 134와 문단
+                            135)</a></div>
+                    <div class="indep2"><a onclick="move()" class="atag" href="#1001-i-101">- 자본관리의 목적, 정책 및 절차(문단
+                            136)</a></div>
+                    <div class="indep2"><a onclick="move()" class="atag" href="#1001-i-102">- 외부적으로 부과된 자본유지요건(문단
+                            136)</a></div>
+                    <div class="indep2"><a onclick="move()" class="atag" href="#1001-i-103">- 내부적인 자본목표</a></div>
+                    <div class="indep2"><a onclick="move()" class="atag" href="#1001-i-104">- 풋가능 금융상품과 청산시 발생하는 의무</a>
+                    </div>
+                    <div class="indep2"><a onclick="move()" class="atag" href="#1001-i-105">- 주당 측정치의 표시</a></div>
+                    <div class="indep1"><a onclick="move()" class="atag" href="#1001-i-106">경과규정과 시행일</a></div>
+                    <div class="indep1"><a onclick="move()" class="atag" href="#1001-i-107">SFAS 130과의 차이점</a></div>
+                    <div class="indep0"><a onclick="move()" class="atag" href="#1001-i-108">소수의견</a></div>
+                    <div class="indep0"><a onclick="move()" class="atag" href="#1001-i-109">실무적용지침</a></div>
+                    <div class="indep0"><a onclick="move()" class="atag" href="#1001-i-110">개정별 비교</a></div>
+
                 </div>
             </div>
 
