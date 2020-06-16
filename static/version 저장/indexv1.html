@@ -19,20 +19,17 @@
         crossorigin="anonymous"></script>
 
     <!-- bootstrap-selec -->
-    <!-- flask 용 css경로 시작-->
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+     <!-- flask 용 css경로 시작
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"> 
     <link href="{{ url_for('static', filename='bootstrap-select.min.css') }}" rel="stylesheet" type="text/css" />
     <script src="{{ url_for('static', filename='bootstrap-select.min.js') }}"></script>
-    <!-- flask 용 css경로 끝-->
+    flask 용 css경로 끝 -->
 
     <!-- 로컬작업 css경로 시작-->
-    <!-- <link rel="stylesheet" href="style.css"> -->
-    <!-- <link href="bootstrap-select.min.css" rel="stylesheet" type="text/css" />
-    <script src="bootstrap-select.min.js"></script> -->
+    <link rel="stylesheet" href="style.css">
+    <link href="bootstrap-select.min.css" rel="stylesheet" type="text/css" />
+    <script src="bootstrap-select.min.js"></script>
     <!-- 로컬작업 css경로 끝 -->
-    
-    <!-- ajax import -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <script>
         $(window).on('load', function () {
@@ -41,31 +38,9 @@
                     'selectedText': 'cat'
                 });
         });
-
-
-        $(document).ready(function () {
-            $('#stdlist').html('');
-            listing();
-        });
-
-        function listing() {
-            $.ajax({
-                type: "GET",
-                url: "/1001",
-                data: {},
-                success: function (response) {
-                    if (response['result'] == 'success') {
-                        console.log('aaa');
-                        alert(response['msg']);
-                    }
-                }
-            })
-        }
-
-
     </script>
 
-
+  
 </head>
 
 <body>
@@ -206,7 +181,7 @@
                         <option value="2032">제2032호 무형자산: 웹 사이트 원가</option>
                     </select>
                 </div>
-                <div class="sidebar border-top" id="stdlist">
+                <div class="sidebar border-top">
                     <div class="indep0"><a class="atag" href="#1001-i-1">개 요</a></div>
                     <div class="indep0"><a class="atag" href="#1001-i-2">국제회계기준과의 관계</a></div>
                     <div class="indep0"><a class="atag" href="#1001-i-3">기업회계기준서 제1001호 재무제표 표시</a></div>

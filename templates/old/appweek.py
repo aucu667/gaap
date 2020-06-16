@@ -13,15 +13,14 @@ db = client.dbsparta                      # 'dbsparta'라는 이름의 db를 만
 def home():
    return render_template('index.html')
 
-@app.route('/1001', methods=['GET'])
+@app.route('/memo', methods=['GET'])
 def listing():
-    result = list(db.kifrs1001.find({},{'_id:0'}))
     # 1. 모든 document 찾기 & _id 값은 출력에서 제외하기
     # 2. articles라는 키 값으로 영화정보 내려주기
-    return jsonify({'result':'success', 'stdlists':result})
+    return jsonify({'result':'success', 'msg':'GET 연결되었습니다!'})
 
 ## API 역할을 하는 부분
-@app.route('/1001', methods=['POST'])
+@app.route('/memo', methods=['POST'])
 def saving():
 		# 1. 클라이언트로부터 데이터를 받기
 		# 2. meta tag를 스크래핑하기
