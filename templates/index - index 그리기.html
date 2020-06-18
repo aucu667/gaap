@@ -179,6 +179,9 @@
         });
 
         function listing() {
+            
+            
+            
             $.ajax({
                 type: "GET",
                 url: "/kifrs1001",
@@ -276,18 +279,11 @@
                                             `
                             $('#std-content').append(temp_html);
                         } else if (dbdepth === 5) {
-                            if (dbid === "") {
-                                let temp_html = `
-                                                <div class="condep5">${dbcontent}</div>
-                                                `
-                                $('#std-content').append(temp_html);
-                            } else {
-                                let temp_html = `
-                                                <div class="connum">${dbnum}</div>
-                                                <div class="condep5">${dbcontent}</div>
-                                                `
-                                $('#std-content').append(temp_html);
-                            }
+                            let temp_html = `
+                                            <div class="connum">${dbnum}</div>
+                                            <div class="condep5">${dbcontent}</div>
+                                            `
+                            $('#std-content').append(temp_html);
                         } else if (dbdepth === 6) {
                             let temp_html = `
                                             <div class="condep6">${dbcontent}</div>
