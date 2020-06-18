@@ -27,6 +27,8 @@
 
     <!-- 로컬작업 css경로 시작-->
     <link rel="stylesheet" href="style.css">
+    <link href="bootstrap-select.min.css" rel="stylesheet" type="text/css" />
+    <script src="bootstrap-select.min.js"></script>
     <!-- 로컬작업 css경로 끝 -->
 
     <script>
@@ -49,6 +51,13 @@
             $('#std-content').show();
         }
 
+
+        $(window).on('load', function () {
+            $('.selectpicker').selectpicker(
+                {
+                    'selectedText': 'cat'
+                });
+        });
     </script>
 
 
@@ -60,7 +69,7 @@
     <!-- 플로팅 버튼 -->
     <div style="position: fixed; bottom: 1rem; right: 2rem; margin:0; padding:0; z-index: 1;"
         class="d-xl-none d-lg-none ">
-        <a onclick="openclose()" href="#" role="button"><img src="list.png"></a>
+        <a id="std-btn" onclick="openclose()" href="#" role="button"><img src="list.png"></a>
     </div>
 
 
@@ -75,7 +84,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent" id="std-content">
             <form class="form-inline ml-auto my-2 my-lg-0">
                 <div class="input-group">
-                    <select class="form-control btn-outline-secondary">
+                    <select class="selectpicker" data-width="fit" data-style="btn-outline-secondary">
                         <option>화면내검색</option>
                         <option>통합검색</option>
                     </select>
@@ -138,7 +147,7 @@
         <div class="row">
             <div class="col-lg-4 border-right" id="std-index" style="padding:0">
                 <div class="std-select">
-                    <select  class="form-control btn-outline-secondary">
+                    <select class="selectpicker form-control" data-style="btn-outline-secondary">
                         <option value="1101">제1101호 한국채택국제회계기준의 최초채택</option>
                         <option value="1102">제1102호 주식기준보상</option>
                         <option value="1103">제1103호 사업결합</option>

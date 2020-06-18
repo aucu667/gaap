@@ -13,20 +13,11 @@ db = client.dbsparta                      # 'dbsparta'라는 이름의 db를 만
 def home():
    return render_template('index.html')
 
-@app.route('/1001', methods=['GET'])
+@app.route('/kifrs1001', methods=['GET'])
 def listing():
-    result = list(db.kifrs1001.find({},{'_id:0'}))
-    # 1. 모든 document 찾기 & _id 값은 출력에서 제외하기
-    # 2. articles라는 키 값으로 영화정보 내려주기
-    return jsonify({'result':'success', 'stdlists':result})
-
-## API 역할을 하는 부분
-@app.route('/1001', methods=['POST'])
-def saving():
-		# 1. 클라이언트로부터 데이터를 받기
-		# 2. meta tag를 스크래핑하기
-		# 3. mongoDB에 데이터 넣기
-    return jsonify({'result': 'success', 'msg':'POST 연결되었습니다!'})
+    result = list(db.kifrs1001.find({}, {'_id':0}).sort('no'))  
+    return jsonify({'result':'success', 'msg':'GET 연결되었습니다!', 'standards':result})
 
 if __name__ == '__main__':
    app.run('0.0.0.0',port=5000,debug=True)
+

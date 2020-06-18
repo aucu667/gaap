@@ -23,7 +23,6 @@
     <style>
         .sub-nav {
             height: 56px;
-            width: 100%;
             display: flex;
             align-items: center;
             padding-left: 1em;
@@ -193,29 +192,7 @@
                         let dbcontent = standards[i]['content'];
 
                         // index 부분그리기
-                        if (dbdepth === 0 && dbid !== "") {
-                            let temp_html = `
-                                            <div class="indep0"><a onclick="move()" class="atag" href="#${dbid}">${dbcontent}</a></div>
-                                            `
-                            $('#std-index').append(temp_html);                            
-                        } else if (dbdepth === 1 && dbid !== "") {
-                            let temp_html = `
-                                            <div class="indep1"><a onclick="move()" class="atag" href="#${dbid}">${dbcontent}</a></div>
-                                            `
-                            $('#std-index').append(temp_html); 
-                        } else if (dbdepth === 2 && dbid !== "") {
-                            let temp_html = `
-                                            <div class="indep2"><a onclick="move()" class="atag" href="#${dbid}">${dbcontent}</a></div>
-                                            `
-                            $('#std-index').append(temp_html); 
-                        } else if (dbdepth === 3 && dbid !== "") {
-                            let temp_html = `
-                                            <div class="indep3"><a onclick="move()" class="atag" href="#${dbid}">${dbcontent}</a></div>
-                                            `
-                            $('#std-index').append(temp_html);
-                        } else {
 
-                        }
 
                         // 본문영역 그리기
                         if (dbdepth === 0) {
@@ -276,11 +253,19 @@
                                             `
                             $('#std-content').append(temp_html);
                         } else if (dbdepth === 5) {
-                            let temp_html = `
-                                            <div class="connum">${dbnum}</div>
-                                            <div class="condep5">${dbcontent}</div>
-                                            `
-                            $('#std-content').append(temp_html);
+                            if (dbid === "") {
+                                let temp_html = `
+                                                <div class="condep5">${dbcontent}</div>
+                                                `
+                                $('#std-content').append(temp_html);
+                            } else {
+                                let temp_html = `
+                                                <a name="${dbid}" id="${dbid}"></a>
+                                                <div class="connum">${dbnum}</div>
+                                                <div class="condep5">${dbcontent}</div>
+                                                `
+                                $('#std-content').append(temp_html);
+                            }
                         } else if (dbdepth === 6) {
                             let temp_html = `
                                             <div class="condep6">${dbcontent}</div>
@@ -293,8 +278,8 @@
                             $('#std-content').append(temp_html);
                         } else if (dbdepth === 8) {
                             let temp_html = `
-                                            <div class="condep8">${dbcontent}</div>
-                                            `
+                                        <div class="condep8">${dbcontent}</div>
+                                        `
                             $('#std-content').append(temp_html);
                         } else if (dbdepth === "fn") {
                             let temp_html = `
@@ -322,7 +307,7 @@
 <body>
     
     <!-- 플로팅 버튼 -->
-    <div style="position: fixed; bottom: 1em; right: 2em; margin:0; padding:0; z-index: 1; display:block;"
+    <div style="position: fixed; bottom: 1em; right: 2em; margin:0; padding:0; z-index: 1;"
         class="d-xl-none d-lg-none ">
         <!-- local 버튼이미지 -->
         <!-- <a id="std-btn" onclick="openclose()" href="#" role="button"><img src="list.png"></a> -->
@@ -333,8 +318,7 @@
     </div>
 
     <!-- NAV -->
-    <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top"> -->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
         <a class="navbar-brand" href="#">회계기준 검색서비스</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -394,12 +378,12 @@
     </nav>
 
     <!-- SUB-NAV   -->
-    <div class="sub-nav bg-primary font-white" style="position:fixed; top:0; margin-top: 56px;">
+    <div class="sub-nav sticky-top  bg-primary font-white">
         한국채택국제회계기준 (K-IFRS)
     </div>
 
     <!-- container -->
-    <div class="container-fluid" style="position:fixed; top:0; margin-top: 112px;">
+    <div class="container-fluid">
         <div class="row">
             <div class="col-lg-4 border-right d-none d-lg-block" id="std-btn" style="padding:0">
                 <div class="std-select">
@@ -468,7 +452,22 @@
                     </select>
                 </div>
                 <div class="sidebar border-top" id="std-index">
-                    
+                    <div class="indep0"><a onclick="move()" class="atag" href="#1001-i-1">개 요</a></div>
+                    <div class="indep0"><a onclick="move()" class="atag" href="#1001-i-2">국제회계기준과의 관계</a></div>
+                    <div class="indep0"><a onclick="move()" class="atag" href="#1001-i-3">기업회계기준서 제1001호 재무제표 표시</a>
+                    </div>
+                    <div class="indep1"><a onclick="move()" class="atag" href="#1001-i-4">목적</a></div>
+                    <div class="indep1"><a onclick="move()" class="atag" href="#1001-i-5">적용</a></div>
+                    <div class="indep1"><a onclick="move()" class="atag" href="#1001-i-6">적용범위</a></div>
+                    <div class="indep1"><a onclick="move()" class="atag" href="#1001-i-7">용어의 정의</a></div>
+                    <div class="indep1"><a onclick="move()" class="atag" href="#1001-i-8">재무제표</a></div>
+                    <div class="indep2"><a onclick="move()" class="atag" href="#1001-i-9">- 재무제표의 목적</a></div>
+                    <div class="indep2"><a onclick="move()" class="atag" href="#1001-i-10">- 전체 재무제표</a></div>
+                    <div class="indep2"><a onclick="move()" class="atag" href="#1001-i-11">- 일반사항</a></div>
+                    <div class="indep3"><a onclick="move()" class="atag" href="#1001-i-12">· 공정한 표시와 한국채택국제회계기준의 준수</a>
+                    </div>
+
+
                 </div>
             </div>
 
