@@ -13,23 +13,61 @@ db = client.dbsparta                      # 'dbsparta'라는 이름의 db를 만
 def home():
    return render_template('index.html')
 
-@app.route('/kifrs1001', methods=['GET'])
-def listingkifrs1001():
-    result = list(db.kifrs1001.find({}, {'_id':0}).sort('no'))  
-    return jsonify({'result':'success', 'msg':'GET 연결되었습니다!', 'standards':result})
+@app.route('/kifrs')
+def kifrs():
+   return render_template('kifrs.html')
 
-@app.route('/kifrs1002', methods=['GET'])
-def listingkifrs1002():
-    result = list(db.kifrs1002.find({}, {'_id':0}).sort('no'))  
-    return jsonify({'result':'success', 'msg':'GET 연결되었습니다!', 'standards':result})
+@app.route('/kgaap')
+def kgaap():
+   return render_template('kgaap.html')
 
-@app.route('/kifrs1007', methods=['GET'])
-def listingkifrs1007():
-    result = list(db.kifrs1007.find({}, {'_id':0}).sort('no'))  
-    return jsonify({'result':'success', 'msg':'GET 연결되었습니다!', 'standards':result})
+@app.route('/kifrs/<num>')
+def link_kifrs_page(num):
+   return render_template('detail.html')
+
+@app.route('/kgaap/<num>')
+def link_kgaap_page(num):
+   return render_template('detail.html')
+
+# index 및 content API
+# 동적 collection : db[변수]
+@app.route('/detail/<num>')
+def getstdnum(num):
+    if int(num) > 1000:
+        kifrs = list(db["kifrs"+num].find({}, {'_id':0}).sort('no'))
+        return jsonify({'result':'success', 'gaap':kifrs})
+    else:
+        kgaap = list(db["kgaap"+num].find({}, {'_id':0}).sort('no'))
+        return jsonify({'result':'success', 'gaap':kgaap})
+
+# 리스트 API
+@app.route('/standard/<type>')
+def getstdlist(type):
+    stdlist= list(db[type+"list"].find({}, {'_id':0}).sort('no'))
+    return jsonify({'result':'success', 'stdlist':stdlist})
+    
+# @app.route('/search/<num>')
+# def find_word(num):
+  #  getstd = list(db["kifrs"+num].find({}, {'_id':0}).sort('no'))
+#    search_value = request.form['search_value']
+ #   print(search_value)
+  #  search_list = []   
+  #  for i in getstd:
+    #   if search_value in i["content"]:
+      #    i0 = i['i0']
+        #  i1 = i['i1']
+ #         i2 = i['i2']
+   #       i3 = i['i3']
+     #     search_list.append(i0)
+       #   search_list.append(i1)
+         # search_list.append(i2)
+#          search_list.append(i3)
+  #        search_list = list(set(search_list))
+    #      search_list.remove('')
+   # return jsonify({'result':'success', 'search_list':search_list})
 
 
-
+    
 
 if __name__ == '__main__':
    app.run('0.0.0.0',port=5000,debug=True)

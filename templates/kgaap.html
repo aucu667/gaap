@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+
+<!-- SUB-NAV   -->
+{% block sub_nav %}
+<div class="sub-nav bg-primary font-white" style="position:fixed; top:0; margin-top: 56px;">
+    일반기업회계기준
+    <form class="form-inline ml-auto">
+        <div class="input-group">
+            <input text="text" style="display: none;">
+            <input class="form-control mr-2" type="search" placeholder="Search" aria-label="Search"
+                id="search" onclick="pagesearch()">
+        </div>
+    </form>
+</div>
+{% endblock %}
+
+<!-- container -->
+{% block container %}
+<div class="container-fluid" style="position:sticky; margin-top:56px; padding:2em; font-size: 0.9em;">
+    <div class="row justify-content-lg-center">
+        <div class="col-lg-3">
+            <div><a href="/kgaap/1" class="stdlist">제01장 목적, 구성 및 적용</a></div>
+            <div><a href="/kgaap/2" class="stdlist">제02장 재무제표의 작성과 표시Ⅰ</a></div>
+            <div><a href="/kgaap/3" class="stdlist">제03장 재무제표의 작성과 표시Ⅱ</a></div>
+            <div><a href="/kgaap/4" class="stdlist">제04장 연결재무제표</a></div>
+            <div><a href="/kgaap/5" class="stdlist">제05장 회계정책, 회계추정의 변경 및 오류</a></div>
+            <div><a href="/kgaap/6" class="stdlist">제06장 금융자산·금융부채</a></div>
+            <div><a href="/kgaap/7" class="stdlist">제07장 재고자산</a></div>
+            <div><a href="/kgaap/8" class="stdlist">제08장 지분법</a></div>
+            <div><a href="/kgaap/9" class="stdlist">제09장 조인트벤처 투자</a></div>
+            <div><a href="/kgaap/10" class="stdlist">제10장 유형자산</a></div>
+        </div>
+        <div class="col-lg-3">
+            <div><a href="/kgaap/11" class="stdlist">제11장 무형자산</a></div>
+            <div><a href="/kgaap/12" class="stdlist">제12장 사업결합</a></div>
+            <div><a href="/kgaap/13" class="stdlist">제13장 리스</a></div>
+            <div><a href="/kgaap/14" class="stdlist">제14장 충당부채, 우발부채 및 우발자산</a></div>
+            <div><a href="/kgaap/15" class="stdlist">제15장 자본</a></div>
+            <div><a href="/kgaap/16" class="stdlist">제16장 수익</a></div>
+            <div><a href="/kgaap/17" class="stdlist">제17장 정부보조금의 회계처리</a></div>
+            <div><a href="/kgaap/18" class="stdlist">제18장 차입원가자본화</a></div>
+            <div><a href="/kgaap/19" class="stdlist">제19장 주식기준보상</a></div>
+            <div><a href="/kgaap/20" class="stdlist">제20장 자산손상</a></div>
+        </div>
+        <div class="col-lg-3">
+            <div><a href="/kgaap/21" class="stdlist">제21장 종업원급여</a></div>
+            <div><a href="/kgaap/22" class="stdlist">제22장 법인세회계</a></div>
+            <div><a href="/kgaap/23" class="stdlist">제23장 환율변동효과</a></div>
+            <div><a href="/kgaap/24" class="stdlist">제24장 보고기간후사건</a></div>
+            <div><a href="/kgaap/25" class="stdlist">제25장 특수관계자 공시</a></div>
+            <div><a href="/kgaap/26" class="stdlist">제26장 기본주당이익</a></div>
+            <div><a href="/kgaap/27" class="stdlist">제27장 특수활동</a></div>
+            <div><a href="/kgaap/28" class="stdlist">제28장 중단사업</a></div>
+            <div><a href="/kgaap/29" class="stdlist">제29장 중간재무제표</a></div>
+            <div><a href="/kgaap/30" class="stdlist">제30장 일반기업회계기준의 최초채택</a></div>
+            <div><a href="/kgaap/31" class="stdlist">제31장 중소기업 회계처리 특례</a></div>
+            <div><a href="/kgaap/32" class="stdlist">제32장 동일지배거래</a></div>
+            <div><a href="/kgaap/33" class="stdlist">제33장 온실가스 배출권과 배출부채</a></div>
+        </div>
+    </div>
+</div>
+{% endblock %}

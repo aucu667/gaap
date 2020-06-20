@@ -5,6 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GAAP</title>
+
+    <!-- 템플릿 상속 -->
+    {% block head %}
+    {% endblock %}
+
     <!-- bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
         integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
@@ -114,7 +119,11 @@
             margin-left: 1em;
         }
 
-        .confn {
+        .confn1 {
+            font-size: 0.9em;
+            font-style: italic;
+        }
+        .confn2 {
             font-size: 0.9em;
             margin-left: 4em;
             font-style: italic;
@@ -125,6 +134,7 @@
             color: black;
             font-size: 0.9em;
             font-weight: bold;
+            line-height: 1.8em;
         }
 
         .indep1 {
@@ -132,18 +142,21 @@
             font-size: 0.9em;
             margin-left: 1em;
             font-weight: bold;
+            line-height: 1.8em;
         }
 
         .indep2 {
             color: black;
             font-size: 0.9em;
             margin-left: 2em;
+            line-height: 1.8em;
         }
 
         .indep3 {
             color: black;
             font-size: 0.9em;
             margin-left: 3em;
+            line-height: 1.8em;
         }
 
         .atag {
@@ -154,10 +167,26 @@
         .highlight {
             background-color: yellow;
         }
+
+        .stdlist {
+            color: black;
+            line-height: 1.5em;
+        }
     </style>
 
     <script>
 
+        function openclose() {
+            if ($('#std-content').css('display') == 'block') {
+                $('#std-btn').attr("class", "col-lg-4 border-right");
+                $('#std-btn').show();
+                $('#std-content').hide();
+            } else {
+
+                $('#std-btn').hide();
+                $('#std-content').show();
+            }
+        }
 
         function move() {
             $('#std-btn').attr("class", "col-lg-4 border-right d-none d-lg-block");
@@ -165,27 +194,55 @@
             $('#std-content').show();
         }
 
-        $(document).ready(function () {
-
-            // $('#std-index').html('');
+        function change_std() {
+            let option_value = $("#std-select option:selected").val();
+            let typeofstd = window.location.href.split("/").slice(-2)[0];
+            $('#std-index').html('');
             $('#std-content').html('');
-            listing();
+            window.location = `/${typeofstd}/${option_value}`
+        }
+
+        $(document).ready(function () {
+            $('#std-select').html('');
+            $('#std-content').html('');
+            $('#std-index').html('');
+            let std_location = Number(window.location.href.split("/").slice(-1))
+            listing(std_location);
+            let std_type = window.location.href.split("/").slice(-2)[0];
+            listinglist(std_type);
+            $("#std-select").val(std_location).prop("selected", true);
         });
 
 
-        //연습코드:select의 값 가져오기
-        //let currentstd = $('#select_id').change(function(){
-        //   alert($(this).val());
-        //  }) 
 
-
-        function listing() {
+        // 리스트 그리는 함수
+        function listinglist(type) {
             $.ajax({
                 type: "GET",
-                url: "/kifrs1007",
+                url: `/standard/${type}`,
                 data: {},
                 success: function (response) {
-                    let standards = response['standards'];
+                    let stdlist = response['bbb'];
+                    for (let i = 0; i < stdlist.length; i++) {
+                        let listnum = stdlist[i]['num'];
+                        let listlist = stdlist[i]['list'];
+                        let temp_html = `
+                                        <option value="${listnum}">${listlist}</option>
+                                        `
+                        $('#std-select').append(temp_html);
+                    }
+                }
+            })
+        }
+
+        // 인덱스, 컨텐츠 그리는 함수
+        function listing(num) {
+            $.ajax({
+                type: "GET",
+                url: `/detail/${num}`,
+                data: {},
+                success: function (response) {
+                    let standards = response['aaa'];
                     for (let i = 0; i < standards.length; i++) {
                         let dbno = standards[i]['no'];
                         let dbid = standards[i]['id'];
@@ -206,12 +263,12 @@
                             $('#std-index').append(temp_html);
                         } else if (dbdepth === 2 && dbid !== "") {
                             let temp_html = `
-                                            <div class="indep2"><a onclick="move()" class="atag" href="#${dbid}">${dbcontent}</a></div>
+                                            <div class="indep2"><a onclick="move()" class="atag" href="#${dbid}">- ${dbcontent}</a></div>
                                             `
                             $('#std-index').append(temp_html);
                         } else if (dbdepth === 3 && dbid !== "") {
                             let temp_html = `
-                                            <div class="indep3"><a onclick="move()" class="atag" href="#${dbid}">${dbcontent}</a></div>
+                                            <div class="indep3"><a onclick="move()" class="atag" href="#${dbid}">· ${dbcontent}</a></div>
                                             `
                             $('#std-index').append(temp_html);
                         } else {
@@ -297,9 +354,14 @@
                                             <div class="condep8">${dbcontent}</div>
                                             `
                             $('#std-content').append(temp_html);
-                        } else if (dbdepth === "fn") {
+                        } else if (dbdepth === "fn1") {
                             let temp_html = `
-                                            <div class="confn">${dbcontent}</div>
+                                            <div class="confn1">${dbcontent}</div>
+                                            `
+                            $('#std-content').append(temp_html);
+                        } else if (dbdepth === "fn2") {
+                            let temp_html = `
+                                            <div class="confn2">${dbcontent}</div>
                                             `
                             $('#std-content').append(temp_html);
                         } else {
@@ -314,9 +376,7 @@
             })
         }
 
-        // get마지막부분
-
-        //search 화면내 검색기능
+        //search 화면내 검색기능 시작
         jQuery.fn.highlight = function (pat) {
             function innerHighlight(node, pat) {
                 var skip = 0;
@@ -368,21 +428,26 @@
             });
         }
 
+        // modal
+        $('#myModal').on('shown.bs.modal', function () {
+            $('#myInput').trigger('focus')
+        })
+
     </script>
 </head>
 
 <body>
 
     <!-- NAV -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
-        <a class="navbar-brand" href="main.html">회계기준 검색서비스</a>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top" id="navbar">
+        <a class="navbar-brand" href="/">회계기준 검색서비스</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent" id="std-content">
-            <form class="form-inline ml-auto my-2 my-lg-0">
+            <!-- <form class="form-inline ml-auto my-2 my-lg-0 d-lg-none d-xl-none">
                 <div class="input-group">
                     <select class="form-control btn-outline-secondary">
                         <option>화면내검색</option>
@@ -392,16 +457,16 @@
                     <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"
                         id="search" onclick="pagesearch()">
                 </div>
-            </form>
+            </form> -->
 
-            <ul class="navbar-nav ml-3">
+            <ul class="navbar-nav ml-3 ml-auto">
                 <li class="nav-item dropdown active">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         K-IFRS
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="kifrs-std.html">기준서</a>
+                        <a class="dropdown-item" href="/kifrs">기준서</a>
                         <a class="dropdown-item" href="#">질의회신</a>
                         <!-- <a class="dropdown-item" href="#">커뮤니티</a> -->
                     </div>
@@ -412,7 +477,7 @@
                         일반기업회계기준
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="kgaap-std.html">기준서</a>
+                        <a class="dropdown-item" href="/kgaap">기준서</a>
                         <a class="dropdown-item" href="#">질의회신</a>
                         <!-- <a class="dropdown-item" href="#">커뮤니티</a> -->
                     </div>
@@ -435,56 +500,9 @@
         </div>
     </nav>
 
-    <!-- SUB-NAV   -->
-    <div class="sub-nav bg-primary font-white" style="position:fixed; top:0; margin-top: 56px;">
-        일반기업회계기준
-    </div>
+    <div id="sub-nav">{% block sub_nav %}{% endblock %}</div>
+    <div id="container">{% block container %}{% endblock %}</div>
 
-    <!-- container -->
-    <div class="container-fluid" style="position:sticky; margin-top:56px; padding:2em; font-size: 0.9em;">
-        <div class="row justify-content-lg-center">
-            <div class="col-lg-3">
-                <div><a href="#" style="color: black; line-height: 1.5em;">제01장 목적, 구성 및 적용</a></div>
-                <div><a href="#" style="color: black; line-height: 1.5em;">제02장 재무제표의 작성과 표시Ⅰ</a></div>
-                <div><a href="#" style="color: black; line-height: 1.5em;">제03장 재무제표의 작성과 표시Ⅱ</a></div>
-                <div><a href="#" style="color: black; line-height: 1.5em;">제04장 연결재무제표</a></div>
-                <div><a href="#" style="color: black; line-height: 1.5em;">제05장 회계정책, 회계추정의 변경 및 오류</a></div>
-                <div><a href="#" style="color: black; line-height: 1.5em;">제06장 금융자산·금융부채</a></div>
-                <div><a href="#" style="color: black; line-height: 1.5em;">제07장 재고자산</a></div>
-                <div><a href="#" style="color: black; line-height: 1.5em;">제08장 지분법</a></div>
-                <div><a href="#" style="color: black; line-height: 1.5em;">제09장 조인트벤처 투자</a></div>
-                <div><a href="#" style="color: black; line-height: 1.5em;">제10장 유형자산</a></div>
-            </div>
-            <div class="col-lg-3">
-                <div><a href="#" style="color: black; line-height: 1.5em;">제11장 무형자산</a></div>
-                <div><a href="#" style="color: black; line-height: 1.5em;">제12장 사업결합</a></div>
-                <div><a href="#" style="color: black; line-height: 1.5em;">제13장 리스</a></div>
-                <div><a href="#" style="color: black; line-height: 1.5em;">제14장 충당부채, 우발부채 및 우발자산</a></div>
-                <div><a href="#" style="color: black; line-height: 1.5em;">제15장 자본</a></div>
-                <div><a href="#" style="color: black; line-height: 1.5em;">제16장 수익</a></div>
-                <div><a href="#" style="color: black; line-height: 1.5em;">제17장 정부보조금의 회계처리</a></div>
-                <div><a href="#" style="color: black; line-height: 1.5em;">제18장 차입원가자본화</a></div>
-                <div><a href="#" style="color: black; line-height: 1.5em;">제19장 주식기준보상</a></div>
-                <div><a href="#" style="color: black; line-height: 1.5em;">제20장 자산손상</a></div>                
-            </div>
-            <div class="col-lg-3">
-                <div><a href="#" style="color: black; line-height: 1.5em;">제21장 종업원급여</a></div>
-                <div><a href="#" style="color: black; line-height: 1.5em;">제22장 법인세회계</a></div>
-                <div><a href="#" style="color: black; line-height: 1.5em;">제23장 환율변동효과</a></div>
-                <div><a href="#" style="color: black; line-height: 1.5em;">제24장 보고기간후사건</a></div>
-                <div><a href="#" style="color: black; line-height: 1.5em;">제25장 특수관계자 공시</a></div>
-                <div><a href="#" style="color: black; line-height: 1.5em;">제26장 기본주당이익</a></div>
-                <div><a href="#" style="color: black; line-height: 1.5em;">제27장 특수활동</a></div>
-                <div><a href="#" style="color: black; line-height: 1.5em;">제28장 중단사업</a></div>
-                <div><a href="#" style="color: black; line-height: 1.5em;">제29장 중간재무제표</a></div>
-                <div><a href="#" style="color: black; line-height: 1.5em;">제30장 일반기업회계기준의 최초채택</a></div>
-                <div><a href="#" style="color: black; line-height: 1.5em;">제31장 중소기업 회계처리 특례</a></div>
-                <div><a href="#" style="color: black; line-height: 1.5em;">제32장 동일지배거래</a></div>
-                <div><a href="#" style="color: black; line-height: 1.5em;">제33장 온실가스 배출권과 배출부채</a></div>
-            </div>
-        </div>
-    </div>
-    </div>
 
 
 </body>

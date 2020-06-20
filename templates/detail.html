@@ -1,0 +1,69 @@
+{% extends "layout.html" %}
+
+<!-- SUB-NAV   -->
+{% block sub_nav %}
+
+<script>
+    $(document).ready(function () {
+        currentpages()
+    });
+
+    function currentpages() {
+        let currentpage = window.location.href.split("/").slice(-2)[0];
+        if (currentpage === "kifrs") {
+            document.getElementById('current_page').innerHTML = "한국채택국제회계기준 (K-IFRS)";
+        } else {
+            document.getElementById('current_page').innerHTML = "일반기업회계기준";
+        }
+    }
+</script>
+
+<div class="sub-nav bg-primary font-white" style="position:fixed; top:0; margin-top: 56px;" id="sub-nav">
+    <span id="current_page"></span>
+    <form class="form-inline ml-auto">
+        <div class="input-group">
+            <input text="text" style="display: none;">
+            <input class="form-control mr-2" type="search" placeholder="Search" aria-label="Search" id="search"
+                onclick="pagesearch()">
+        </div>
+    </form>
+
+</div>
+
+{% endblock %}
+
+<!-- container -->
+{% block container %}
+<div class="container-fluid" style="position:fixed; top:0; margin-top: 112px;" id="container">
+
+    <!-- 플로팅 버튼 -->
+    <div style="position: fixed; bottom: 1em; right: 2em; margin:0; padding:0; z-index: 1; display:block;"
+        class="d-xl-none d-lg-none ">
+        <!-- local 버튼이미지 -->
+        <!-- <a id="std-btn" onclick="openclose()" href="#" role="button"><img src="list.png"></a> -->
+        <!-- flask용 버튼이미지 -->
+        <a onclick="openclose()" href="#" role="button"><img src="{{ url_for('static', filename='list.png') }}"></a>
+
+    </div>
+
+    <!-- 내용표시부분 -->
+    <div class="row">
+        <div class="col-lg-4 border-right d-none d-lg-block" id="std-btn" style="padding:0">
+            <div class="std-select-box">
+                <select class="form-control btn-outline-secondary" style="width: 100%;" id="std-select"
+                    onchange="change_std()">
+                    <!-- script로 그리기 -->
+                </select>
+            </div>
+            <div class="sidebar border-top" id="std-index">
+                <!-- script로 그리기 -->
+            </div>
+        </div>
+
+        <div class="col-lg-8 main" id="std-content">
+            <!-- script로 그리기 -->
+        </div>
+    </div>
+
+</div>
+{% endblock %}
