@@ -218,7 +218,9 @@
             let std_location = Number(window.location.href.split("/").slice(-1))
             listing(std_location);            
             let std_type = window.location.href.split("/").slice(-2)[0];
-            listinglist(std_type);   
+            listinglist(std_type);                        
+            $("#std-select").val(std_location).prop("selected", true);
+            let currentnum = window.location.href.split("/").slice(-1)[0];
         });
 
         // list 그리는 함수
@@ -233,16 +235,9 @@
                     for (let i = 0; i < stdlist.length; i++) {                        
                         $('#std-select').append(stdlist[i]['htmlli']);
                     }
-                    // select 리로딩 되는 문제 해결부분
-                    let std_location = Number(window.location.href.split("/").slice(-1));
-                    $("#std-select").val(std_location).prop("selected", true);
                 }
             })
         }
-
-
-
-
 
         // index, content 그리는 함수
         function listing(num) {
