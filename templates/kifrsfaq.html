@@ -1,0 +1,123 @@
+{% extends "layout.html" %}
+
+<!-- SUB-NAV   -->
+{% block sub_nav %}
+{% endblock %}
+
+<!-- container -->
+{% block container %}
+
+
+<script>
+       
+
+        
+        $(document).ready(function () {
+            $('#orders-box').html('');
+            listinggaap();
+        });
+
+        function listinggaap() {
+            $.ajax({
+                type: "GET",
+                url: "/reviews",
+                data: {},
+                success: function (response) {
+                    if (response['result'] == 'success') {
+                        let reviews = response['reviews'];
+                        for (let i = 0; i < reviews.length; i++) {
+                            if (reviews[i]['category']==="K-IFRS"){
+                                make_card(reviews[i]['title'], reviews[i]['category'], reviews[i]['review']);
+                            }
+                        }
+                    } else {
+                        alert('리뷰를 받아오지 못했습니다');
+                    }
+                }
+            })
+        }
+
+        function make_card(title, category, review) {
+            let temp_html = `<tr>
+                <td>${category}</td>
+                                <td>${title}</td>
+                                
+                                <td>${review}</td>
+                            </tr>`;
+            $('#orders-box').append(temp_html);
+        }
+
+
+
+
+    </script>
+    <style>
+        .wrap {
+            width: 1000px;
+            margin: auto;
+        }
+
+        .info {
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        .user-info {
+            margin: 20px 5px auto 5px;
+        }
+
+        h1,
+        h5 {
+            display: inline;
+        }
+
+        .order {
+            text-align: center;
+        }
+
+        .orders {
+            margin-top: 20px;
+        }
+
+        .meta_info {
+            width: 30%;
+        }
+        .meta_info1 {
+            width: 20%;
+        }
+    </style>
+</head>
+
+<div class="container" style="margin-top: 20px;">
+    <h2>K-IFRS 질의회신</h2>
+    <div class="row">
+        
+        <div class="orders col">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th class="meta_info1" scope="col">유형</th>
+                        <th class="meta_info" scope="col">제목</th>
+                        <th scope="col">내용</th>
+                        
+                    </tr>
+                </thead>
+                <tbody id="orders-box">
+                    <tr>
+                        <td>Otto</td>
+                        <td>@mdo</td>
+                        <td>@mdo</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+  </div> 
+
+
+
+{% endblock %}
+
+
+
+   

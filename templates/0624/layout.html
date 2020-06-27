@@ -25,15 +25,7 @@
     <!-- ajax -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-    <!-- 구글폰트 -->
-    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Noto+Sans+KR&display=swap" rel="stylesheet">
-
     <style>
-        * {
-            font-family: 'Nanum Gothic', sans-serif;
-            font-family: 'Noto Sans KR', sans-serif;
-        }
-
         .sub-nav {
             height: 56px;
             width: 100%;
@@ -71,57 +63,69 @@
         }
 
         .condep0 {
+            font-size: 1em;
             font-weight: bold;
             background-color: rgb(223, 223, 223);
             padding: 0.5em;
         }
 
         .condep1 {
+            font-size: 0.9em;
             font-weight: bold;
             border-bottom: 1px solid rgb(223, 223, 223);
             padding-bottom: 0.5em
         }
 
         .condep2 {
+            font-size: 0.9em;
             font-weight: bold;
         }
 
         .condep3 {
+            font-size: 0.9em;
             font-weight: bold;
             margin-left: 4em;
         }
 
         .condep4 {
+            font-size: 0.9em;
             font-weight: bold;
             margin-left: 4em;
             font-style: italic;
         }
 
         .connum {
+            font-size: 0.9em;
             display: block;
             float: left;
         }
 
         .condep5 {
+            font-size: 0.9em;
             margin-left: 4em;
         }
 
         .condep6 {
+            font-size: 0.9em;
             margin-left: 5em;
         }
 
         .condep7 {
+            font-size: 0.9em;
         }
 
         .condep8 {
+            font-size: 0.9em;
             margin-left: 1em;
         }
 
         .confn1 {
+            font-size: 0.9em;
             font-style: italic;
         }
 
         .confn2 {
+            font-size: 0.9em;
             margin-left: 4em;
             font-style: italic;
         }
@@ -129,12 +133,14 @@
         .indep0 {
             margin-top: 1em;
             color: black;
+            font-size: 0.9em;
             font-weight: bold;
             line-height: 1.8em;
         }
 
         .indep1 {
             color: black;
+            font-size: 0.9em;
             margin-left: 1em;
             font-weight: bold;
             line-height: 1.8em;
@@ -142,12 +148,14 @@
 
         .indep2 {
             color: black;
+            font-size: 0.9em;
             margin-left: 2em;
             line-height: 1.8em;
         }
 
         .indep3 {
             color: black;
+            font-size: 0.9em;
             margin-left: 3em;
             line-height: 1.8em;
         }
@@ -200,6 +208,14 @@
             $('#std-index').html('');
             $('#std-content').html('');
             window.location = `/${typeofstd}/${option_value}`
+
+            //어떻게 리프레쉬가 안되게 하는지??? 1002 또는 1007을 선택했는데 계속 1001만 선택됨
+            //let currentnum = window.location.href.split("/").slice(-1);
+            //console.log(currentnum);
+            //$("#std-select").val(currentnum).prop("selected", true); 
+
+
+
         }
 
         //화면 로딩시
@@ -230,6 +246,10 @@
                 }
             })
         }
+
+
+
+
 
         // index, content 그리는 함수
         function listing(num) {
@@ -295,30 +315,23 @@
 
         function pagesearch() {
             $("#search").keypress(function (e) {
-                let searchword = $('#search').val();
-                if (e.which == 13 && searchword.trim() != "") {
-
+                if (e.which == 13) {
+                    let searchword = $('#search').val();
                     $('#std-index').removeHighlight();
                     $('#std-content').removeHighlight();
-                    $('#std-kifrs').removeHighlight();
-                    $('#std-kgaap').removeHighlight();
-                    $("[id^='index-']").css('color', "black");
                     $('#std-index').highlight(searchword);
                     $('#std-content').highlight(searchword);
-                    $('#std-kifrs').highlight(searchword);
-                    $('#std-gaap').highlight(searchword);
-                    $("[id^='gaap-']").css('color', "black");
-
                     wordsearch();
-                    wordsearch_gaap();
-
                 }
 
             });
         }
 
-        //search DB -detail검색
+        //search DB검색
         function wordsearch() {
+            // 1. 제목, 저자, 리뷰 내용을 가져옵니다.
+            // 2. 제목, 저자, 리뷰 중 하나라도 입력하지 않았을 경우 alert를 띄웁니다.
+            // 3. POST /reviews 에 저장을 요청합니다.
             let search_db = Number(window.location.href.split("/").slice(-1)[0]);
             let search_value = $("#search").val();
             $.ajax({
@@ -326,7 +339,6 @@
                 url: '/search', // url을 작성합니다.
                 data: { 'search_value': search_value, 'search_db': search_db }, // data를 작성합니다. },
                 success: function (response) {
-
                     if (response['result'] == 'success') {
                         for (let i = 0; i < response['final_result'].length; i++) {
                             let aaaaa = response['final_result'][i];
@@ -341,48 +353,14 @@
             });
         }
 
-        //search DB -list검색
-        function wordsearch_gaap() {
-            let search_db = window.location.href.split("/").slice(-1)[0];
-            let search_value = $("#search").val();
-            $.ajax({
-                type: 'POST', // 타입을 작성합니다.
-                url: '/searchstd', // url을 작성합니다.
-                data: { 'search_value': search_value, 'search_db': search_db }, // data를 작성합니다. },
-                success: function (response) {
 
-                    if (response['result'] == 'success') {
-                        for (let i = 0; i < response['final_result'].length; i++) {
-                            let bbbbb = response['final_result'][i];
-                            if (bbbbb !== 0) {
-                                $(function () {
-                                    $(`#gaap-${bbbbb}`).css('color', "red");
-                                });
-                            }
-                        }
-                    }
-                }
-            });
-        }
 
-        function openPopup() {
-            let pop_url = "/popup";
-            let pop_name = "popup test";;
-            let pop_option = "width = 500, height = 500, top = 100, left = 200";
-            window.open(pop_url, pop_name, pop_option);
-        }
-       
 
-        function closePopup() {
-            // opener.location.href="xxx.html"   페이지 이동후 닫기 할때
-            self.close();
-        }
 
     </script>
 </head>
 
 <body>
-
 
     <!-- NAV -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top" id="navbar">
@@ -413,7 +391,7 @@
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="/kifrs">기준서</a>
-                        <a class="dropdown-item" href="/kifrsfaq">질의회신</a>
+                        <a class="dropdown-item" href="#">질의회신</a>
                         <!-- <a class="dropdown-item" href="#">커뮤니티</a> -->
                     </div>
                 </li>
@@ -424,7 +402,7 @@
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="/kgaap">기준서</a>
-                        <a class="dropdown-item" href="/kgaapfaq">질의회신</a>
+                        <a class="dropdown-item" href="#">질의회신</a>
                         <!-- <a class="dropdown-item" href="#">커뮤니티</a> -->
                     </div>
                 </li>
@@ -448,6 +426,8 @@
 
     <div id="sub-nav">{% block sub_nav %}{% endblock %}</div>
     <div id="container">{% block container %}{% endblock %}</div>
+
+
 
 </body>
 
